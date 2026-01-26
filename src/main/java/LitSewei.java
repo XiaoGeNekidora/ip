@@ -10,17 +10,19 @@ public class LitSewei {
         System.out.println("____________________________________________________________");
     }
 
-    private static void printGreeting() {
+    private static void printWithDividingLines(String message) {
         printDividingLine();
-        System.out.println("Hello! I'm Lit Sewei.\n" +
-                "What can I do for you? UwU");
+        System.out.println(message);
         printDividingLine();
     }
 
+    private static void printGreeting() {
+        printWithDividingLines("Hello! I'm Lit Sewei.\n" +
+                "What can I do for you? UwU");
+    }
+
     private static void printGoodbye() {
-        printDividingLine();
-        System.out.println("Bye. See you next time~~~");
-        printDividingLine();
+        printWithDividingLines("Bye. See you next time~~~");
     }
 
     private static void printList() {
@@ -37,29 +39,21 @@ public class LitSewei {
             int taskId = Integer.parseInt(input.split(" ")[1]);
 
             if (tasks.get(taskId - 1).isDone() == mark) {
-                printDividingLine();
-                System.out.println("Emm... This task is already " + (mark ? "marked" : "unmarked") + "? >_<");
-                printDividingLine();
+                printWithDividingLines("Emm... This task is already " + (mark ? "marked" : "unmarked") + "? >_<");
                 return;
             }
 
             tasks.get(taskId - 1).setDone(mark);
 
-            printDividingLine();
             if (mark) {
-                System.out.println("Marked this as done: " + tasks.get(taskId - 1).getName() + "!! :>");
+                printWithDividingLines("Marked this as done: " + tasks.get(taskId - 1).getName() + "!! :>");
             } else {
-                System.out.println("Marked this as not done yet: " + tasks.get(taskId - 1).getName() + "!! :<");
+                printWithDividingLines("Marked this as not done yet: " + tasks.get(taskId - 1).getName() + "!! :<");
             }
-            printDividingLine();
         } catch (NumberFormatException e) {
-            printDividingLine();
-            System.out.println("I cannot understand >_<. Just give me an ID plz~");
-            printDividingLine();
+            printWithDividingLines("I cannot understand >_<. Just give me an ID plz~");
         } catch (IndexOutOfBoundsException e) {
-            printDividingLine();
-            System.out.println("The ID you gave me seems wrong >_<. Plz check again~");
-            printDividingLine();
+            printWithDividingLines("The ID you gave me seems wrong >_<. Plz check again~");
         }
     }
 
@@ -74,7 +68,6 @@ public class LitSewei {
                 """;
 
         System.out.println("Hello from\n" + logo);
-
         printGreeting();
 
         // Main loop
@@ -91,9 +84,7 @@ public class LitSewei {
             } else {
                 tasks.add(new Task(input));
 
-                printDividingLine();
-                System.out.println("I've noted down this task: " + input + "!!!");
-                printDividingLine();
+                printWithDividingLines("I've noted down this task: " + input + "!!!");
             }
         }
 
