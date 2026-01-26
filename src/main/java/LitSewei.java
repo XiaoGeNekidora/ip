@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LitSewei {
 
     private static Scanner sc = new Scanner(System.in);
+    private static ArrayList<String> tasks = new ArrayList<>();
 
     private static void printDividingLine(){
         System.out.println("____________________________________________________________");
@@ -18,6 +20,15 @@ public class LitSewei {
     private static void printGoodbye(){
         printDividingLine();
         System.out.println("Bye. See you next time~~~");
+        printDividingLine();
+    }
+
+    private static void printList(){
+        printDividingLine();
+        System.out.println("Here is the TODO list:");
+        for(int i=0;i<tasks.size();i++){
+            System.out.println((i+1) + ". " + tasks.get(i));
+        }
         printDividingLine();
     }
 
@@ -38,12 +49,15 @@ public class LitSewei {
         // Main loop
         while(true){
             String input = sc.nextLine().trim();
-            if(input.equalsIgnoreCase("bye")) {
+            if(input.equalsIgnoreCase("bye")){
                 break;
+            }else if(input.equalsIgnoreCase("list")){
+                printList();
             }else{
-                //echo
+                tasks.add(input);
+
                 printDividingLine();
-                System.out.println(input);
+                System.out.println("I've noted down this task: "+input+"!!!");
                 printDividingLine();
             }
         }
