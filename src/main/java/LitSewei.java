@@ -11,13 +11,14 @@ public class LitSewei {
     private static void printGreeting(){
         printDividingLine();
         System.out.println("Hello! I'm Lit Sewei.\n" +
-                "What can I do for you?");
-
+                "What can I do for you? UwU");
+        printDividingLine();
     }
 
     private static void printGoodbye(){
         printDividingLine();
-        System.out.println("Bye. Hope to see you again soon!");
+        System.out.println("Bye. See you next time~~~");
+        printDividingLine();
     }
 
     public static void main(String[] args) {
