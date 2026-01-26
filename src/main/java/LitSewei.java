@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class LitSewei {
+
+    private static Scanner sc = new Scanner(System.in);
 
     private static void printDividingLine(){
         System.out.println("____________________________________________________________");
@@ -29,6 +33,20 @@ public class LitSewei {
         System.out.println("Hello from\n" + logo);
 
         printGreeting();
+
+        // Main loop
+        while(true){
+            String input = sc.nextLine().trim();
+            if(input.equalsIgnoreCase("bye")) {
+                break;
+            }else{
+                //echo
+                printDividingLine();
+                System.out.println(input);
+                printDividingLine();
+            }
+        }
+
         printGoodbye();
     }
 }
