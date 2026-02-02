@@ -83,35 +83,48 @@ public class LitSewei {
             } else if (input.startsWith("unmark ")) {
                 markOrUnmark(input, false);
             } else if (input.startsWith("todo ")) {
-                var task = new Task(input.substring(5));
-                tasks.add(task);
-
-                printWithDividingLines("I've noted down this todo: " + task.getName() + "!!!");
+                addTodo(input);
             } else if (input.startsWith("deadline ")) {
-                try {
-                    var ddl = Deadline.from(input.substring(9));
-                    tasks.add(ddl);
-
-                    printWithDividingLines("Remember to do " + ddl.getName() + " by " + ddl.getBy() + "!!!");
-                } catch (IllegalArgumentException e) {
-                    printWithDividingLines("I could not understand that deadline format >_<. Please use: deadline <name> /by <due date>");
-                }
+                addDeadline(input);
             } else if (input.startsWith("event ")) {
-                try {
-                    var event = Event.from(input.substring(6));
-                    tasks.add(event);
-
-                    printWithDividingLines(String.format("Noted the event: %s (from: %s to: %s)!!!",
-                            event.getName(), event.getStart(), event.getEnd()));
-                } catch (IllegalArgumentException e) {
-                    printWithDividingLines("I could not understand that event format >_<. Please use: event <name> /from <start time> /to <end time>");
-                }
+                addEvent(input);
             } else {
                 printWithDividingLines("I don't quite get it >_<. Can you rephrase?");
             }
         }
     }
 
+    private static void addTodo(String input) {
+        var task = new Task(input.substring(5));
+        tasks.add(task);
+
+        printWithDividingLines("I've noted down this todo: " + task.getName() + "!!!");
+    }
+
+
+    private static void addDeadline(String input) {
+        try {
+            var ddl = Deadline.from(input.substring(9));
+            tasks.add(ddl);
+
+            printWithDividingLines("Remember to do " + ddl.getName() + " by " + ddl.getBy() + "!!!");
+        } catch (IllegalArgumentException e) {
+            printWithDividingLines("I could not understand that deadline format >_<. Please use: deadline <name> /by <due date>");
+        }
+    }
+
+    private static void addEvent(String input) {
+        try {
+            var event = Event.from(input.substring(6));
+            tasks.add(event);
+
+            printWithDividingLines(String.format("Noted the event: %s (from: %s to: %s)!!!",
+                    event.getName(), event.getStart(), event.getEnd()));
+        } catch (IllegalArgumentException e) {
+            printWithDividingLines("I could not understand that event format >_<. Please use: event <name> /from <start time> /to <end time>");
+        }
+    }
+    
     public static void main(String[] args) {
         printLogo();
         printGreeting();
