@@ -16,6 +16,19 @@ public class LitSewei {
         printDividingLine();
     }
 
+    private static void printLogo() {
+        String logo = """
+                .____    .__  __      _________                    .__\s
+                |    |   |__|/  |_   /   _____/ ______  _  __ ____ |__|
+                |    |   |  \\   __\\  \\_____  \\_/ __ \\ \\/ \\/ // __ \\|  |
+                |    |___|  ||  |    /        \\  ___/\\     /\\  ___/|  |
+                |_______ \\__||__|   /_______  /\\___  >\\/\\_/  \\___  >__|
+                        \\/                  \\/     \\/            \\/   \s
+                """;
+
+        System.out.println("Hello from\n" + logo);
+    }
+
     private static void printGreeting() {
         printWithDividingLines("Hello! I'm Lit Sewei.\n" +
                 "What can I do for you? UwU");
@@ -29,7 +42,7 @@ public class LitSewei {
         printDividingLine();
         System.out.println("Here is the TODO list:");
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.printf("%d. [%s] %s\n", i + 1, tasks.get(i).isDone() ? "X" : " ", tasks.get(i).getName());
+            System.out.printf("%d. %s\n", i + 1, tasks.get(i).toString());
         }
         printDividingLine();
     }
@@ -57,19 +70,7 @@ public class LitSewei {
         }
     }
 
-    public static void main(String[] args) {
-        String logo = """
-                .____    .__  __      _________                    .__\s
-                |    |   |__|/  |_   /   _____/ ______  _  __ ____ |__|
-                |    |   |  \\   __\\  \\_____  \\_/ __ \\ \\/ \\/ // __ \\|  |
-                |    |___|  ||  |    /        \\  ___/\\     /\\  ___/|  |
-                |_______ \\__||__|   /_______  /\\___  >\\/\\_/  \\___  >__|
-                        \\/                  \\/     \\/            \\/   \s
-                """;
-
-        System.out.println("Hello from\n" + logo);
-        printGreeting();
-
+    private static void mainLoop() {
         // Main loop
         while (true) {
             String input = sc.nextLine().trim();
@@ -81,13 +82,40 @@ public class LitSewei {
                 markOrUnmark(input, true);
             } else if (input.startsWith("unmark ")) {
                 markOrUnmark(input, false);
-            } else {
-                tasks.add(new Task(input));
+            } else if (input.startsWith("todo ")) {
+                var task = new Task(input.substring(5));
+                tasks.add(task);
 
-                printWithDividingLines("I've noted down this task: " + input + "!!!");
+                printWithDividingLines("I've noted down this todo: " + task.getName() + "!!!");
+            } else if (input.startsWith("deadline ")) {
+                try {
+                    var ddl = Deadline.from(input.substring(9));
+                    tasks.add(ddl);
+
+                    printWithDividingLines("Remember to do " + ddl.getName() + " by " + ddl.getBy() + "!!!");
+                } catch (IllegalArgumentException e) {
+                    printWithDividingLines("I could not understand that deadline format >_<. Please use: deadline <name> /by <due date>");
+                }
+            } else if (input.startsWith("event ")) {
+                try {
+                    var event = Event.from(input.substring(6));
+                    tasks.add(event);
+
+                    printWithDividingLines(String.format("Noted the event: %s (from: %s to: %s)!!!",
+                            event.getName(), event.getStart(), event.getEnd()));
+                } catch (IllegalArgumentException e) {
+                    printWithDividingLines("I could not understand that event format >_<. Please use: event <name> /from <start time> /to <end time>");
+                }
+            } else {
+                printWithDividingLines("I don't quite get it >_<. Can you rephrase?");
             }
         }
+    }
 
+    public static void main(String[] args) {
+        printLogo();
+        printGreeting();
+        mainLoop();
         printGoodbye();
     }
 }
