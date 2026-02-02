@@ -18,12 +18,12 @@ public class LitSewei {
 
     private static void printLogo() {
         String logo = """
-                .____    .__  __      _________                    .__\s
+                .____    .__  __      _________                    .__
                 |    |   |__|/  |_   /   _____/ ______  _  __ ____ |__|
                 |    |   |  \\   __\\  \\_____  \\_/ __ \\ \\/ \\/ // __ \\|  |
                 |    |___|  ||  |    /        \\  ___/\\     /\\  ___/|  |
                 |_______ \\__||__|   /_______  /\\___  >\\/\\_/  \\___  >__|
-                        \\/                  \\/     \\/            \\/   \s
+                        \\/                  \\/     \\/            \\/
                 """;
 
         System.out.println("Hello from\n" + logo);
@@ -72,7 +72,7 @@ public class LitSewei {
 
     private static void mainLoop() {
         // Main loop
-        while (true) {
+        while (sc.hasNext()) {
             String input = sc.nextLine().trim();
             if (input.equalsIgnoreCase("bye")) {
                 break;
@@ -124,7 +124,7 @@ public class LitSewei {
             printWithDividingLines("I could not understand that event format >_<. Please use: event <name> /from <start time> /to <end time>");
         }
     }
-    
+
     public static void main(String[] args) {
         printLogo();
         printGreeting();
