@@ -26,6 +26,7 @@ public class Event extends Task {
 
     /**
      * Create Event from input string
+     *
      * @param input input string including /from and /to
      * @throws IllegalArgumentException if input format is invalid
      */

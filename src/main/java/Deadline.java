@@ -8,6 +8,7 @@ public class Deadline extends Task {
 
     /**
      * Create DDL from input string
+     *
      * @param input input string including /from and /to
      * @throws IllegalArgumentException if input format is invalid
      */
@@ -17,7 +18,7 @@ public class Deadline extends Task {
             String name = parts[0].trim();
             String by = parts[1].trim();
             return new Deadline(name, by);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             throw new IllegalArgumentException();
         }
     }
