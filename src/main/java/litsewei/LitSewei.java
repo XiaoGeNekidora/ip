@@ -1,3 +1,9 @@
+package litsewei;
+
+import litsewei.task.Deadline;
+import litsewei.task.Event;
+import litsewei.task.Task;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
