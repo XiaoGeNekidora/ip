@@ -9,6 +9,16 @@ public class Task {
         this.isDone = false;
     }
 
+    /**
+     * Create Task from input string. <br/>
+     * For now, it has the same effect as the constructor.
+     * @param input - the task name
+     * @return The task with the given name
+     */
+    public static Task from(String input) {
+        return new Task(input);
+    }
+
     public String getName() {
         return name;
     }
