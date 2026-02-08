@@ -1,3 +1,6 @@
+todo
+deadline
+event
 todo Borrow books
 deadline Submit report
 deadline Submit report /by 2024-07-01
@@ -10,3 +13,4 @@ mark 2
 list
 unmark 2
 list
+bye
