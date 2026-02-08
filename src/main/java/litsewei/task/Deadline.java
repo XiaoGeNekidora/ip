@@ -1,5 +1,7 @@
 package litsewei.task;
 
+import litsewei.exception.InvalidTaskFormatException;
+
 public class Deadline extends Task {
     private String by;
 
@@ -12,7 +14,7 @@ public class Deadline extends Task {
      * Create DDL from input string
      *
      * @param input input string including /from and /to
-     * @throws IllegalArgumentException if input format is invalid
+     * @throws InvalidTaskFormatException if input format is invalid
      */
     public static Deadline from(String input) {
         try {
@@ -21,7 +23,7 @@ public class Deadline extends Task {
             String by = parts[1].trim();
             return new Deadline(name, by);
         } catch (Exception ex) {
-            throw new IllegalArgumentException();
+            throw new InvalidTaskFormatException();
         }
     }
 

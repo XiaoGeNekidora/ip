@@ -1,5 +1,6 @@
 package litsewei;
 
+import litsewei.exception.InvalidTaskFormatException;
 import litsewei.task.Deadline;
 import litsewei.task.Event;
 import litsewei.task.Task;
@@ -130,7 +131,7 @@ public class LitSewei {
             tasks.add(ddl);
 
             printWithDividingLines("Remember to do " + ddl.getName() + " by " + ddl.getBy() + "!!!");
-        } catch (IllegalArgumentException e) {
+        } catch (InvalidTaskFormatException e) {
             printWithDividingLines("I could not understand that deadline format >_<. Please use: deadline <name> /by <due date>");
         }
     }
@@ -147,7 +148,7 @@ public class LitSewei {
 
             printWithDividingLines(String.format("Noted the event: %s (from: %s to: %s)!!!",
                     event.getName(), event.getStart(), event.getEnd()));
-        } catch (IllegalArgumentException e) {
+        } catch (InvalidTaskFormatException e) {
             printWithDividingLines("I could not understand that event format >_<. Please use: event <name> /from <start time> /to <end time>");
         }
     }

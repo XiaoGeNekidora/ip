@@ -1,5 +1,7 @@
 package litsewei.task;
 
+import litsewei.exception.InvalidTaskFormatException;
+
 public class Event extends Task {
     private String start;
     private String end;
@@ -30,7 +32,7 @@ public class Event extends Task {
      * Create Event from input string
      *
      * @param input input string including /from and /to
-     * @throws IllegalArgumentException if input format is invalid
+     * @throws InvalidTaskFormatException if input format is invalid
      */
     public static Event from(String input) {
         try {
@@ -40,7 +42,7 @@ public class Event extends Task {
             String end = parts[2].trim();
             return new Event(name, start, end);
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new InvalidTaskFormatException();
         }
     }
 
