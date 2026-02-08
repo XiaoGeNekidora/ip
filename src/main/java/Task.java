@@ -23,8 +23,12 @@ public class Task {
         isDone = done;
     }
 
+    public String getTaskType() {
+        return "T";
+    }
+
     @Override
     public String toString() {
-        return "[T]" + (isDone ? "[X] " : "[ ] ") + name;
+        return "[" + getTaskType() + "]" + (isDone ? "[X] " : "[ ] ") + name;
     }
 }

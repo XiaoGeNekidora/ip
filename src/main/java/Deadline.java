@@ -32,7 +32,12 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String getTaskType() {
+        return "D";
+    }
+
+    @Override
     public String toString() {
-        return "[D]" + (isDone() ? "[X] " : "[ ] ") + getName() + " (by: " + by + ")";
+        return super.toString() + " (by: " + by + ")";
     }
 }
