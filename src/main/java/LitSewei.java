@@ -49,7 +49,13 @@ public class LitSewei {
 
     private static void markOrUnmark(String input, boolean mark) {
         try {
-            int taskId = Integer.parseInt(input.split(" ")[1]);
+            var list = input.split(" ");
+            if (list.length == 1) {
+                printWithDividingLines("Which? Please give me an ID...");
+                return;
+            }
+
+            int taskId = Integer.parseInt(list[1]);
 
             if (tasks.get(taskId - 1).isDone() == mark) {
                 printWithDividingLines("Emm... This task is already " + (mark ? "marked" : "unmarked") + "? >_<");
@@ -78,15 +84,15 @@ public class LitSewei {
                 break;
             } else if (input.equalsIgnoreCase("list")) {
                 printList();
-            } else if (input.startsWith("mark ")) {
+            } else if (input.startsWith("mark")) {
                 markOrUnmark(input, true);
-            } else if (input.startsWith("unmark ")) {
+            } else if (input.startsWith("unmark")) {
                 markOrUnmark(input, false);
-            } else if (input.startsWith("todo ")) {
+            } else if (input.startsWith("todo")) {
                 addTodo(input);
-            } else if (input.startsWith("deadline ")) {
+            } else if (input.startsWith("deadline")) {
                 addDeadline(input);
-            } else if (input.startsWith("event ")) {
+            } else if (input.startsWith("event")) {
                 addEvent(input);
             } else {
                 printWithDividingLines("I don't quite get it >_<. Can you rephrase?");
@@ -95,6 +101,11 @@ public class LitSewei {
     }
 
     private static void addTodo(String input) {
+        if (input.length() < 5) {
+            printWithDividingLines("The description of a todo cannot be empty..?");
+            return;
+        }
+
         var task = new Task(input.substring(5));
         tasks.add(task);
 
@@ -104,6 +115,11 @@ public class LitSewei {
 
     private static void addDeadline(String input) {
         try {
+            if (input.length() < 9) {
+                printWithDividingLines("The description of a deadline cannot be empty..?");
+                return;
+            }
+
             var ddl = Deadline.from(input.substring(9));
             tasks.add(ddl);
 
@@ -115,6 +131,11 @@ public class LitSewei {
 
     private static void addEvent(String input) {
         try {
+            if (input.length() < 6) {
+                printWithDividingLines("The description of an event cannot be empty..?");
+                return;
+            }
+
             var event = Event.from(input.substring(6));
             tasks.add(event);
 
