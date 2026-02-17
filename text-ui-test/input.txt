@@ -7,10 +7,16 @@ deadline Submit report /by 2024-07-01
 event Team meeting /at 2024-06-15 10:00
 event Team meeting /from here /to there
 list
+mark 0
+mark 114514
 mark 1
 list
 mark 2
 list
 unmark 2
+list
+delete 1919810
+delete -1
+delete 3
 list
 bye
