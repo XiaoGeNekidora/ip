@@ -1,6 +1,7 @@
 package litsewei;
 
 import litsewei.exception.InvalidTaskFormatException;
+import litsewei.exception.SaverException;
 import litsewei.task.Deadline;
 import litsewei.task.Event;
 import litsewei.task.Task;
@@ -101,6 +102,8 @@ public class LitSewei {
                 addDeadline(input);
             } else if (input.startsWith("event")) {
                 addEvent(input);
+            } else if (input.equalsIgnoreCase("save")) {
+                saveToDisk();
             } else {
                 printWithDividingLines("I don't quite get it >_<. Can you rephrase?");
             }
@@ -153,9 +156,29 @@ public class LitSewei {
         }
     }
 
+    private static void loadFromDisk() {
+        try {
+            tasks = Saver.load();
+            printWithDividingLines("Recovered "+tasks.size()+" tasks from my notebook for you~");
+        } catch (SaverException e) {
+            printWithDividingLines("EHH??? Failed to load tasks from disk?? My messenger said: " + e.getMessage());
+        }
+    }
+
+    private static void saveToDisk() {
+        try {
+            Saver.save(tasks);
+            printWithDividingLines("Saved successfully!!!");
+        } catch (SaverException e) {
+            printWithDividingLines("WAA??? Failed to save tasks to disk?? The saver said: " + e.getMessage());
+        }
+    }
+
+
     public static void main(String[] args) {
         printLogo();
         printGreeting();
+        loadFromDisk();
         mainLoop();
         printGoodbye();
     }
