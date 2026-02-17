@@ -83,6 +83,27 @@ public class LitSewei {
         }
     }
 
+    private static void deleteTask(String input) {
+        try {
+            var list = input.split(" ");
+            if (list.length == 1) {
+                printWithDividingLines("Which? Please give me an ID...");
+                return;
+            }
+
+            int taskId = Integer.parseInt(list[1]);
+
+            var removedTask = tasks.remove(taskId - 1);
+
+            printWithDividingLines("Deleted this: " + removedTask.getName() + "!! ^^");
+
+        } catch (NumberFormatException e) {
+            printWithDividingLines("I cannot understand >_<. Just give me an ID plz~");
+        } catch (IndexOutOfBoundsException e) {
+            printWithDividingLines("The ID you gave me seems wrong >_<. Plz check again~");
+        }
+    }
+
     private static void mainLoop() {
         // Main loop
         while (sc.hasNext()) {
@@ -95,6 +116,8 @@ public class LitSewei {
                 markOrUnmark(input, true);
             } else if (input.startsWith("unmark")) {
                 markOrUnmark(input, false);
+            } else if (input.startsWith("delete")) {
+                deleteTask(input);
             } else if (input.startsWith("todo")) {
                 addTodo(input);
             } else if (input.startsWith("deadline")) {
