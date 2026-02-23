@@ -20,6 +20,14 @@ public class MaybeDateTime {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 
+    /**
+     * Converts the MaybeDateTime to a string. <br/>
+     * If the type is DATE, it will be formatted as "yyyy-MM-dd". <br/>
+     * If the type is STRING, it will return the original string. <br/>
+     *
+     * <b>Note: use toString() when displaying a MaybeDateTime</b>
+     *
+     */
     public String serialize() {
         if (type == Type.DATE) {
             return date.format(DATE_FORMATTER);
@@ -28,6 +36,13 @@ public class MaybeDateTime {
         }
     }
 
+    /**
+     * Converts the MaybeDateTime to a string. <br/>
+     * If the type is DATE, it will be formatted as "MMM dd yyyy". <br/>
+     * If the type is STRING, it will return the original string.
+     * <br/>
+     * <b>Note: use serialize() when saving a MaybeDateTime</b>
+     */
     @Override
     public String toString() {
         if (type == Type.DATE) {

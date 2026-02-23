@@ -5,6 +5,9 @@ import litsewei.util.Pair;
 
 import java.util.ArrayList;
 
+/**
+ * A utility class to print messages to the user. <br/>
+ */
 public class Printer {
     public static void printDividingLine() {
         System.out.println("____________________________________________________________");
