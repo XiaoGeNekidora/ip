@@ -3,10 +3,17 @@ package litsewei.command;
 import litsewei.Printer;
 import litsewei.TaskManager;
 
+/**
+ * Command to mark or unmark a task as done.
+ */
 public class MarkOrUnmarkCommand extends Command{
 
     private boolean isMarkCommand;
 
+    /**
+     * Constructs a MarkOrUnmarkCommand.
+     * @param isMarkCommand true if the command is to mark a task, false to unmark
+     */
     public MarkOrUnmarkCommand(boolean isMarkCommand) {
         this.isMarkCommand = isMarkCommand;
     }

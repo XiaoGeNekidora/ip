@@ -5,6 +5,10 @@ package litsewei.exception;
  * Usually caused by IO issues, such as the disk being full, or the file being corrupted. <br/>
  */
 public class SaverException extends Exception{
+    /**
+     * Constructs a SaverException with the given message.
+     * @param message the error message
+     */
     public SaverException(String message) {
         super(message);
     }

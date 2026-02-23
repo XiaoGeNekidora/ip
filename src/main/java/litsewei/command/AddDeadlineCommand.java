@@ -5,6 +5,9 @@ import litsewei.TaskManager;
 import litsewei.exception.InvalidTaskFormatException;
 import litsewei.task.Deadline;
 
+/**
+ * Command to add a deadline task.
+ */
 public class AddDeadlineCommand extends Command {
     @Override
     public boolean isTriggered(String input) {

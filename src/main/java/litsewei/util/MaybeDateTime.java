@@ -52,6 +52,10 @@ public class MaybeDateTime {
         }
     }
 
+    /**
+     * Constructs a MaybeDateTime.
+     * @param stringDate the date string to parse or store
+     */
     public MaybeDateTime(String stringDate) {
         try {
             date = LocalDate.parse(stringDate, DATE_FORMATTER);

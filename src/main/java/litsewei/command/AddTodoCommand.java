@@ -4,6 +4,9 @@ import litsewei.Printer;
 import litsewei.TaskManager;
 import litsewei.task.Task;
 
+/**
+ * Command to add a todo task.
+ */
 public class AddTodoCommand extends Command {
     @Override
     public boolean isTriggered(String input) {

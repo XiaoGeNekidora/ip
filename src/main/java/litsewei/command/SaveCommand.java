@@ -5,6 +5,9 @@ import litsewei.Saver;
 import litsewei.TaskManager;
 import litsewei.exception.SaverException;
 
+/**
+ * Command to save tasks to disk.
+ */
 public class SaveCommand extends Command {
     @Override
     public boolean isTriggered(String input) {

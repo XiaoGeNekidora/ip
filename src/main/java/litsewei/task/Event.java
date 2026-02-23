@@ -3,28 +3,53 @@ package litsewei.task;
 import litsewei.exception.InvalidTaskFormatException;
 import litsewei.util.MaybeDateTime;
 
+/**
+ * Represents an event task.
+ */
 public class Event extends Task {
     private MaybeDateTime start;
     private MaybeDateTime end;
 
+    /**
+     * Constructs an event task.
+     * @param name the name of the event
+     * @param start the start time of the event
+     * @param end the end time of the event
+     */
     public Event(String name, String start, String end) {
         super(name);
         this.start = new MaybeDateTime(start);
         this.end = new MaybeDateTime(end);
     }
 
+    /**
+     * Gets the start time of the event.
+     * @return the start time
+     */
     public MaybeDateTime getStart() {
         return start;
     }
 
+    /**
+     * Sets the start time of the event.
+     * @param start the new start time
+     */
     public void setStart(MaybeDateTime start) {
         this.start = start;
     }
 
+    /**
+     * Gets the end time of the event.
+     * @return the end time
+     */
     public MaybeDateTime getEnd() {
         return end;
     }
 
+    /**
+     * Sets the end time of the event.
+     * @param end the new end time
+     */
     public void setEnd(MaybeDateTime end) {
         this.end = end;
     }

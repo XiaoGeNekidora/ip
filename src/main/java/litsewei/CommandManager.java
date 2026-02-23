@@ -2,6 +2,9 @@ package litsewei;
 
 import litsewei.command.*;
 
+/**
+ * Manages the execution of commands.
+ */
 public class CommandManager {
 
     private TaskManager taskManager;
@@ -22,6 +25,10 @@ public class CommandManager {
         this.taskManager = taskManager;
     }
 
+    /**
+     * Handles the input command.
+     * @param input the input command string
+     */
     public void handleCommand(String input) {
         for (Command command : commands) {
             if (command.isTriggered(input)) {

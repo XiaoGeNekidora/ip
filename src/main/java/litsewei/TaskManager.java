@@ -1,6 +1,5 @@
 package litsewei;
 
-import litsewei.exception.InvalidTaskFormatException;
 import litsewei.exception.SaverException;
 import litsewei.task.Deadline;
 import litsewei.task.Event;
@@ -14,18 +13,34 @@ import java.util.ArrayList;
 public class TaskManager {
     private ArrayList<Task> tasks = new ArrayList<>();
 
+    /**
+     * Gets the list of tasks.
+     * @return the list of tasks
+     */
     public ArrayList<Task> getTasks() {
         return tasks;
     }
 
+    /**
+     * Adds a todo task to the list.
+     * @param todo the todo task to add
+     */
     public void addTodo(Task todo) {
         tasks.add(todo);
     }
 
+    /**
+     * Adds a deadline task to the list.
+     * @param ddl the deadline task to add
+     */
     public void addDeadline(Deadline ddl) {
         tasks.add(ddl);
     }
 
+    /**
+     * Adds an event task to the list.
+     * @param event the event task to add
+     */
     public void addEvent(Event event) {
         tasks.add(event);
     }

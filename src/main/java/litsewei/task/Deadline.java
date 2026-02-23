@@ -3,9 +3,17 @@ package litsewei.task;
 import litsewei.exception.InvalidTaskFormatException;
 import litsewei.util.MaybeDateTime;
 
+/**
+ * Represents a deadline task.
+ */
 public class Deadline extends Task {
     private MaybeDateTime by;
 
+    /**
+     * Constructs a deadline task.
+     * @param name the name of the deadline
+     * @param by the due date of the deadline
+     */
     public Deadline(String name, String by) {
         super(name);
         this.by = new MaybeDateTime(by);
@@ -49,10 +57,18 @@ public class Deadline extends Task {
         return super.serialize() + "|" + by.serialize();
     }
 
+    /**
+     * Gets the due date of the deadline.
+     * @return the due date
+     */
     public MaybeDateTime getBy() {
         return by;
     }
 
+    /**
+     * Sets the due date of the deadline.
+     * @param by the new due date
+     */
     public void setBy(MaybeDateTime by) {
         this.by = by;
     }

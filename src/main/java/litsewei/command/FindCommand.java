@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Command to find tasks by keyword.
+ */
 public class FindCommand extends Command {
 
 

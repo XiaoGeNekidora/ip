@@ -2,10 +2,17 @@ package litsewei.task;
 
 import java.util.Scanner;
 
+/**
+ * Represents a task.
+ */
 public class Task {
     private String name;
     private boolean isDone;
 
+    /**
+     * Constructs a task with the given name.
+     * @param name the name of the task
+     */
     public Task(String name) {
         this.name = name;
         this.isDone = false;
@@ -37,26 +44,50 @@ public class Task {
         return task;
     }
 
+    /**
+     * Serializes the task to a string.
+     * @return the serialized string
+     */
     public String serialize() {
         return getTaskType() + "|" + getName() + "|" + isDone();
     }
 
+    /**
+     * Gets the name of the task.
+     * @return the name of the task
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the name of the task.
+     * @param name the new name of the task
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Checks if the task is done.
+     * @return true if the task is done, false otherwise
+     */
     public boolean isDone() {
         return isDone;
     }
 
+    /**
+     * Sets the done status of the task.
+     * @param done the new done status
+     */
     public void setDone(boolean done) {
         isDone = done;
     }
 
+    /**
+     * Gets the type code of the task.
+     * @return the type code
+     */
     public String getTaskType() {
         return "T";
     }

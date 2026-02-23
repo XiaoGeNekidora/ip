@@ -3,6 +3,9 @@ package litsewei.command;
 import litsewei.Printer;
 import litsewei.TaskManager;
 
+/**
+ * Command to delete a task.
+ */
 public class DeleteCommand extends Command {
     @Override
     public boolean isTriggered(String input) {

@@ -1,14 +1,12 @@
 package litsewei;
 
-import litsewei.exception.InvalidTaskFormatException;
 import litsewei.exception.SaverException;
-import litsewei.task.Deadline;
-import litsewei.task.Event;
-import litsewei.task.Task;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Main class for the LitSewei chatbot.
+ */
 public class LitSewei {
 
     private Scanner sc = new Scanner(System.in);
@@ -38,6 +36,10 @@ public class LitSewei {
         }
     }
 
+    /**
+     * Main entry point of the application.
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         new LitSewei().start();
     }

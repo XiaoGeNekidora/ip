@@ -5,6 +5,9 @@ import litsewei.TaskManager;
 import litsewei.exception.InvalidTaskFormatException;
 import litsewei.task.Event;
 
+/**
+ * Command to add an event task.
+ */
 public class AddEventCommand extends Command {
     @Override
     public boolean isTriggered(String input) {

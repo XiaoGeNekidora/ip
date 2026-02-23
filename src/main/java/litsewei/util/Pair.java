@@ -8,6 +8,11 @@ public class Pair<T>{
     public int index;
     public T item;
 
+    /**
+     * Constructs a Pair.
+     * @param index the index
+     * @param item the item
+     */
     public Pair(int index, T item) {
         this.index = index;
         this.item = item;
