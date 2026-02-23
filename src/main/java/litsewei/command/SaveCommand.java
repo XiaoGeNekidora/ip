@@ -1,6 +1,9 @@
 package litsewei.command;
 
+import litsewei.Printer;
+import litsewei.Saver;
 import litsewei.TaskManager;
+import litsewei.exception.SaverException;
 
 public class SaveCommand extends Command {
     @Override
@@ -10,6 +13,11 @@ public class SaveCommand extends Command {
 
     @Override
     public void execute(String input, TaskManager taskManager) {
-        taskManager.saveToDisk();
+        try {
+            taskManager.saveToDisk();
+            Printer.printWithDividingLines("Saved successfully!!!");
+        } catch (SaverException e) {
+            Printer.printWithDividingLines("WAA??? Failed to save taskManager.getTasks() to disk?? The saver said: " + e.getMessage());
+        }
     }
 }

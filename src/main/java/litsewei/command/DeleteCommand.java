@@ -3,7 +3,7 @@ package litsewei.command;
 import litsewei.Printer;
 import litsewei.TaskManager;
 
-public class DeleteCommand extends Command{
+public class DeleteCommand extends Command {
     @Override
     public boolean isTriggered(String input) {
         return input.startsWith("delete");
@@ -11,6 +11,21 @@ public class DeleteCommand extends Command{
 
     @Override
     public void execute(String input, TaskManager taskManager) {
-        taskManager.deleteTask(input);
+        try {
+            var list = input.split(" ");
+            if (list.length == 1) {
+                Printer.printWithDividingLines("Which? Please give me an ID...");
+                return;
+            }
+
+            int taskId = Integer.parseInt(list[1]);
+            var removedTask = taskManager.deleteTask(taskId);
+
+            Printer.printWithDividingLines("Deleted this: " + removedTask.getName() + "!! ^^");
+        } catch (NumberFormatException e) {
+            Printer.printWithDividingLines("I cannot understand >_<. Just give me an ID plz~");
+        } catch (IndexOutOfBoundsException e) {
+            Printer.printWithDividingLines("The ID you gave me seems wrong >_<. Plz check again~");
+        }
     }
 }

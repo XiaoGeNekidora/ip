@@ -28,6 +28,15 @@ public class LitSewei {
         }
     }
 
+    private void loadFromDisk() {
+        try {
+            taskManager.loadFromDisk();
+            Printer.printWithDividingLines("Recovered " + taskManager.getTasks().size() + " taskManager.getTasks() from my notebook for you~");
+
+        } catch (SaverException e) {
+            Printer.printWithDividingLines("WAA??? Failed to load taskManager.getTasks() from disk?? The saver said: " + e.getMessage());
+        }
+    }
 
     public static void main(String[] args) {
         new LitSewei().start();
@@ -36,7 +45,7 @@ public class LitSewei {
     private void start() {
         Printer.printLogo();
         Printer.printGreeting();
-        taskManager.loadFromDisk();
+        loadFromDisk();
         mainLoop();
         Printer.printGoodbye();
     }

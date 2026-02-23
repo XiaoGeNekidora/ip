@@ -1,6 +1,9 @@
 package litsewei.command;
 
+import litsewei.Printer;
 import litsewei.TaskManager;
+import litsewei.exception.InvalidTaskFormatException;
+import litsewei.task.Event;
 
 public class AddEventCommand extends Command {
     @Override
@@ -10,6 +13,19 @@ public class AddEventCommand extends Command {
 
     @Override
     public void execute(String input, TaskManager taskManager) {
-        taskManager.addEvent(input);
+        try {
+            if (input.length() < 6) {
+                Printer.printWithDividingLines("The description of an event cannot be empty..?");
+                return;
+            }
+
+            var event = Event.from(input.substring(6));
+            taskManager.addEvent(event);
+
+            Printer.printWithDividingLines(String.format("Noted the event: %s (from: %s to: %s)!!!",
+                    event.getName(), event.getStart(), event.getEnd()));
+        } catch (InvalidTaskFormatException e) {
+            Printer.printWithDividingLines("I could not understand that event format >_<. Please use: event <name> /from <start time> /to <end time>");
+        }
     }
 }
