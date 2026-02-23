@@ -11,20 +11,20 @@ import java.util.Scanner;
 
 public class LitSewei {
 
-    private static Scanner sc = new Scanner(System.in);
-    private static ArrayList<Task> tasks = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in);
+    private ArrayList<Task> tasks = new ArrayList<>();
 
-    private static void printDividingLine() {
+    private void printDividingLine() {
         System.out.println("____________________________________________________________");
     }
 
-    private static void printWithDividingLines(String message) {
+    private void printWithDividingLines(String message) {
         printDividingLine();
         System.out.println(message);
         printDividingLine();
     }
 
-    private static void printLogo() {
+    private void printLogo() {
         String logo = """
                 .____    .__  __      _________                    .__
                 |    |   |__|/  |_   /   _____/ ______  _  __ ____ |__|
@@ -37,16 +37,16 @@ public class LitSewei {
         System.out.println("Hello from\n" + logo);
     }
 
-    private static void printGreeting() {
+    private void printGreeting() {
         printWithDividingLines("Hello! I'm Lit Sewei.\n" +
                 "What can I do for you? UwU");
     }
 
-    private static void printGoodbye() {
+    private void printGoodbye() {
         printWithDividingLines("Bye. See you next time~~~");
     }
 
-    private static void printList() {
+    private void printList() {
         printDividingLine();
         System.out.println("Here is the TODO list:");
         for (int i = 0; i < tasks.size(); i++) {
@@ -55,7 +55,7 @@ public class LitSewei {
         printDividingLine();
     }
 
-    private static void markOrUnmark(String input, boolean mark) {
+    private void markOrUnmark(String input, boolean mark) {
         try {
             var list = input.split(" ");
             if (list.length == 1) {
@@ -84,7 +84,7 @@ public class LitSewei {
         }
     }
 
-    private static void deleteTask(String input) {
+    private void deleteTask(String input) {
         try {
             var list = input.split(" ");
             if (list.length == 1) {
@@ -105,7 +105,7 @@ public class LitSewei {
         }
     }
 
-    private static void mainLoop() {
+    private void mainLoop() {
         // Main loop
         while (sc.hasNext()) {
             String input = sc.nextLine().trim();
@@ -133,7 +133,7 @@ public class LitSewei {
         }
     }
 
-    private static void addTodo(String input) {
+    private void addTodo(String input) {
         if (input.length() < 5) {
             printWithDividingLines("The description of a todo cannot be empty..?");
             return;
@@ -146,7 +146,7 @@ public class LitSewei {
     }
 
 
-    private static void addDeadline(String input) {
+    private void addDeadline(String input) {
         try {
             if (input.length() < 9) {
                 printWithDividingLines("The description of a deadline cannot be empty..?");
@@ -162,7 +162,7 @@ public class LitSewei {
         }
     }
 
-    private static void addEvent(String input) {
+    private void addEvent(String input) {
         try {
             if (input.length() < 6) {
                 printWithDividingLines("The description of an event cannot be empty..?");
@@ -179,16 +179,16 @@ public class LitSewei {
         }
     }
 
-    private static void loadFromDisk() {
+    private void loadFromDisk() {
         try {
             tasks = Saver.load();
-            printWithDividingLines("Recovered "+tasks.size()+" tasks from my notebook for you~");
+            printWithDividingLines("Recovered " + tasks.size() + " tasks from my notebook for you~");
         } catch (SaverException e) {
             printWithDividingLines("EHH??? Failed to load tasks from disk?? My messenger said: " + e.getMessage());
         }
     }
 
-    private static void saveToDisk() {
+    private void saveToDisk() {
         try {
             Saver.save(tasks);
             printWithDividingLines("Saved successfully!!!");
@@ -199,6 +199,10 @@ public class LitSewei {
 
 
     public static void main(String[] args) {
+        new LitSewei().start();
+    }
+
+    private void start() {
         printLogo();
         printGreeting();
         loadFromDisk();
