@@ -19,4 +19,7 @@ delete 1919810
 delete -1
 delete 3
 list
+find
+find report
+find o
 bye
