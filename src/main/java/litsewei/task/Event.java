@@ -1,32 +1,31 @@
 package litsewei.task;
 
 import litsewei.exception.InvalidTaskFormatException;
-
-import java.util.Scanner;
+import litsewei.util.MaybeDateTime;
 
 public class Event extends Task {
-    private String start;
-    private String end;
+    private MaybeDateTime start;
+    private MaybeDateTime end;
 
     public Event(String name, String start, String end) {
         super(name);
-        this.start = start;
-        this.end = end;
+        this.start = new MaybeDateTime(start);
+        this.end = new MaybeDateTime(end);
     }
 
-    public String getStart() {
+    public MaybeDateTime getStart() {
         return start;
     }
 
-    public void setStart(String start) {
+    public void setStart(MaybeDateTime start) {
         this.start = start;
     }
 
-    public String getEnd() {
+    public MaybeDateTime getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(MaybeDateTime end) {
         this.end = end;
     }
 
@@ -67,7 +66,7 @@ public class Event extends Task {
 
     @Override
     public String serialize() {
-        return super.serialize() + "|" + start + "|" + end;
+        return super.serialize() + "|" + start.serialize() + "|" + end.serialize();
     }
 
 

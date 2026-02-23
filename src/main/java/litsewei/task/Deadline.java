@@ -1,15 +1,14 @@
 package litsewei.task;
 
 import litsewei.exception.InvalidTaskFormatException;
-
-import java.util.Scanner;
+import litsewei.util.MaybeDateTime;
 
 public class Deadline extends Task {
-    private String by;
+    private MaybeDateTime by;
 
     public Deadline(String name, String by) {
         super(name);
-        this.by = by;
+        this.by = new MaybeDateTime(by);
     }
 
     /**
@@ -47,14 +46,14 @@ public class Deadline extends Task {
 
     @Override
     public String serialize() {
-        return super.serialize() + "|" + by;
+        return super.serialize() + "|" + by.serialize();
     }
 
-    public String getBy() {
+    public MaybeDateTime getBy() {
         return by;
     }
 
-    public void setBy(String by) {
+    public void setBy(MaybeDateTime by) {
         this.by = by;
     }
 
