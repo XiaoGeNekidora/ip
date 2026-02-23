@@ -3,6 +3,7 @@ package litsewei.util;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 
 /**
  * A union class for string and LocalDate. <br/>
@@ -30,7 +31,7 @@ public class MaybeDateTime {
     @Override
     public String toString() {
         if (type == Type.DATE) {
-            return date.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+            return date.format(DateTimeFormatter.ofPattern("MMM dd yyyy").withLocale(Locale.ENGLISH));
         } else {
             return stringDate;
         }
