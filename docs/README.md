@@ -1,6 +1,8 @@
 # LitSewei User Guide
 
 LitSewei is a desktop application for managing tasks. It is optimized for use via a Command Line Interface (CLI).
+![Screenshot](img.png)
+
 
 ## Features
 
