@@ -13,9 +13,9 @@ Format: `list`
 Expected output:
 ```
 Here is the TODO list:
-1.[T][ ] read book
-2.[D][ ] return book (by: Sunday)
-3.[E][ ] project meeting (from: Mon 2pm to: 4pm)
+1. [T][ ] read book
+2. [D][ ] return book (by: Sunday)
+3. [E][ ] project meeting (from: Mon 2pm to: 4pm)
 ```
 
 ### Adding a Todo: `todo`
@@ -107,8 +107,8 @@ Example: `find book`
 Expected output:
 ```
 Here is the filtered TODO list:
-1.[T][ ] read book
-2.[D][ ] return book (by: Sunday)
+1. [T][ ] read book
+2. [D][ ] return book (by: Sunday)
 ```
 
 ### Saving data: `save`
