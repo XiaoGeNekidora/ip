@@ -179,6 +179,9 @@ public class LitSewei {
         }
     }
 
+    /**
+     * Loads the list of tasks from disk and assigns it to the tasks variable. <br/>
+     */
     private void loadFromDisk() {
         try {
             tasks = Saver.load();
@@ -188,6 +191,9 @@ public class LitSewei {
         }
     }
 
+    /**
+     * Saves the current list of tasks to disk. If there is an error during saving, an error message will be printed. <br/>
+     */
     private void saveToDisk() {
         try {
             Saver.save(tasks);
