@@ -1,6 +1,7 @@
 package litsewei;
 
 import litsewei.task.Task;
+import litsewei.util.Pair;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,15 @@ public class Printer {
         System.out.println("Here is the TODO list:");
         for (int i = 0; i < tasks.size(); i++) {
             System.out.printf("%d. %s\n", i + 1, tasks.get(i).toString());
+        }
+        printDividingLine();
+    }
+
+    public static void printPairedList(ArrayList<Pair<Task>> tasks) {
+        printDividingLine();
+        System.out.println("Here is the filtered TODO list:");
+        for (var item : tasks) {
+            System.out.printf("%d. %s\n", item.index + 1, item.item.toString());
         }
         printDividingLine();
     }
