@@ -14,7 +14,8 @@ public class CommandManager {
             new AddTodoCommand(),
             new AddEventCommand(),
             new AddDeadlineCommand(),
-            new SaveCommand()
+            new SaveCommand(),
+            new FindCommand()
     };
 
     public CommandManager(TaskManager taskManager) {
