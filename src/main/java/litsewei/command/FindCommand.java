@@ -21,6 +21,11 @@ public class FindCommand extends Command {
     public void execute(String input, TaskManager taskManager) {
         var filter = input.substring("find".length()).trim();
 
+        if(filter.isBlank()) {
+            Printer.printWithDividingLines("Please provide a keyword to search for!~");
+            return;
+        }
+
         var list = IntStream.range(0, taskManager.getTasks().size())
                 .mapToObj(i -> new Pair<>(i, taskManager.getTasks().get(i)))
                 .filter(e -> e.item.getName().contains(filter))
