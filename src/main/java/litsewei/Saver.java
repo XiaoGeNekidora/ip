@@ -12,9 +12,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * This class handles saving and loading of tasks to and from a file. <br/>
+ * Handles saving and loading of tasks to and from a file. <br/>
+ * File path is at "data/tasks.txt". <br/>
+ * If the file or directory does not exist, it will be created when saving. <br
  */
 public class Saver {
+    /**
+     * Saves the list of tasks to a file. <br/>
+     * @param tasks - the list of tasks to save
+     * @throws SaverException if there is an error during saving, such as IO exceptions or directory creation failures.
+     */
     public static void save(ArrayList<Task> tasks) throws SaverException {
         var dir = new File("data");
         if (!dir.exists()) {
@@ -35,6 +42,11 @@ public class Saver {
         }
     }
 
+    /**
+     * Loads the list of tasks from a file. <br/>
+     * @return the list of tasks loaded from the file. If the file does not exist, an empty list is returned.
+     * @throws SaverException if there is an error during loading, such as IO exceptions or unknown task types in the file.
+     */
     public static ArrayList<Task> load() throws SaverException {
         var file = new File("data/tasks.txt");
         if (!file.exists()) {
